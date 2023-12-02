@@ -1,0 +1,8 @@
+---
+- name: Install OpenH264
+  become: true
+  ansible.builtin.dnf:
+    name:
+      - openh264
+      - mozilla-openh264
+    state: latest

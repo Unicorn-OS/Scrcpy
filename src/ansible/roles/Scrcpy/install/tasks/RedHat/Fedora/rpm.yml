@@ -13,3 +13,7 @@
     name:
       - scrcpy
     state: latest
+ 
+- name: OpenH264 to fix problems on Fedora
+  ansible.builtin.include_role:
+    name: openh264
