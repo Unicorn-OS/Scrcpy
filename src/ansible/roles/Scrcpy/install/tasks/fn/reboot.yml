@@ -1,0 +1,12 @@
+- name: Reboot node
+  ansible.builtin.reboot:
+  when: ansible_connection != "local"
+
+- name: Reboot manually
+  debug:
+    msg: "You must reboot manually, then re-run this playlist! - if localhost"
+  when: ansible_connection == "local"
+
+- name: Exit if localhost
+  meta: end_host
+  when: ansible_connection == "local"
