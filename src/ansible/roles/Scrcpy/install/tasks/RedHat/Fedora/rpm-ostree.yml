@@ -1,14 +1,18 @@
-- name: Install core KVM packages
-  community.general.rpm_ostree_pkg:
-    name: "{{ item }}"
-    state: present
-  loop:
-  - virt-install
-  - virt-manager
-  - virt-viewer
-  - libvirt
-  become: true
-  notify:
-  - Reboot
-  - start the libvirtd service
+---
+# https://github.com/Genymobile/scrcpy/blob/master/doc/linux.md
 
+- name: Enable Copr repo
+  ansible.builtin.get_url:
+    url: "{{ copr_repo_url_fedora }}"
+    dest: /etc/yum.repos.d/coprs-zeno-scrcpy.repo
+  become: true
+
+- name: Install Scrcpy
+  become: true
+  community.general.rpm_ostree_pkg:
+    name: scrcpy
+    state: present
+ 
+- name: OpenH264 to fix problems on Fedora
+  ansible.builtin.include_role:
+    name: openh264

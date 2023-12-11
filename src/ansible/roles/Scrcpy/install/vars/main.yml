@@ -9,3 +9,5 @@ Fedora_Beta: 39
 ubuntu_latest_supported_codename: "jammy"
 
 ubuntu_latest_supported_ver: 22.04
+
+copr_repo_url_fedora: "https://copr.fedorainfracloud.org/coprs/zeno/scrcpy/repo/fedora-{{ ansible_distribution_major_version }}/zeno-scrcpy-fedora-{{ ansible_distribution_major_version }}.repo"

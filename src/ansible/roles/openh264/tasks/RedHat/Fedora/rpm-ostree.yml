@@ -1,14 +1,10 @@
-- name: Install core KVM packages
+- name: Install openh264
   community.general.rpm_ostree_pkg:
     name: "{{ item }}"
     state: present
   loop:
-  - virt-install
-  - virt-manager
-  - virt-viewer
-  - libvirt
+  - openh264
+  - mozilla-openh264
   become: true
   notify:
   - Reboot
-  - start the libvirtd service
-
