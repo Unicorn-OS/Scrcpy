@@ -5,4 +5,4 @@
     - scrcpy
     - android-tools-adb
   become: true
-  when: repository
+  when: source == "repository"
