@@ -1,6 +1,12 @@
 # Screen Rotation
-Guide: [Change Screen Rotation in SCRCPY | Changing Screen Rotation Settings.](https://youtu.be/7tFKsSlgyHk)
+sch: https://www.google.com/search?q=scrcpy+rotate+screen
 
+# Doc:
+https://github.com/Genymobile/scrcpy/blob/master/doc/video.md
+
+
+
+# old:
 ```
 scrcpy --rotation=0
 0: no rotation
@@ -12,4 +18,4 @@ scrcpy --rotation=0
 example:
 `scrcpy --rotation=1 -s localhost:5555`
 
-sch: https://www.google.com/search?q=scrcpy+rotate+screen
+Guide: [Change Screen Rotation in SCRCPY | Changing Screen Rotation Settings.](https://youtu.be/7tFKsSlgyHk)
