@@ -1,9 +1,0 @@
-# from: https://github.com/p1u3o/tidbits#android-tools-adb-fastboot-etc
-
-- name: in Toolbox
-  ansible.builtin.include_tasks: ../in:/Toolbox/main.yml
-  when: in_Toolbox
-
-- name: Not in Toolbox
-  ansible.builtin.include_tasks: rpm-ostree.yml
-  when: not in_Toolbox
