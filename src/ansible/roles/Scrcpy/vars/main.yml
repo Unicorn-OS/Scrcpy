@@ -1,3 +1,7 @@
+build_dir: /opt/build
+repo_dir: "{{ build_dir }}/scrcpy"
+
+## Delete Unnecessary:
 filename: platform-tools-latest-linux
 
 url: "https://dl.google.com/android/repository/{{ filename }}.zip"

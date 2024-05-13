@@ -1,0 +1,20 @@
+---
+- name: Dependencies
+  ansible.builtin.apt:
+    pkg:
+    - android-tools-adb
+  become: true
+
+- name: Install from Repository
+  ansible.builtin.apt:
+    pkg:
+    - scrcpy
+  become: true
+  when: not latest and source == "repository"
+
+- name: Latest from Git
+  include_tasks: "{{ item }}"
+  when: latest
+  loop:
+  - latest Dependency.yml
+  - Latest Git/main.yml

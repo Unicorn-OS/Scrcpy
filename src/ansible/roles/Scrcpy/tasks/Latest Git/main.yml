@@ -1,0 +1,27 @@
+---
+# https://github.com/Genymobile/scrcpy/blob/master/doc/linux.md
+
+- debug:
+    msg: "Hello Latest!"
+
+- name: Create build directory
+  ansible.builtin.file:
+    path: "{{ build_dir }}"
+    state: directory
+    mode: '0755'
+    owner: "{{ ansible_env.USER }}"
+    group: "{{ ansible_env.USER }}"
+  become: true
+
+- name: Git checkout
+  ansible.builtin.git:
+    repo: 'https://github.com/Genymobile/scrcpy'
+    dest: "{{ repo_dir }}"
+    # version: release-0.22
+
+- name: execute the installation script
+  ansible.builtin.shell: ./install_release.sh
+  args:
+    chdir: "{{ repo_dir }}"
+    creates: /usr/local/share/scrcpy
+  become: true

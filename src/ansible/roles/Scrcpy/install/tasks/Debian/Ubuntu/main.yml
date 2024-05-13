@@ -1,8 +1,0 @@
----
-- name: Install 
-  ansible.builtin.apt:
-    pkg:
-    - scrcpy
-    - android-tools-adb
-  become: true
-  when: source == "repository"
