@@ -1,4 +1,6 @@
-#https://github.com/Genymobile/scrcpy/blob/master/doc/linux.md#from-an-install-script
+# Doc.
+# https://github.com/Genymobile/scrcpy/blob/master/doc/linux.md#from-an-install-script
+
 bac_dir=/mnt/chromeos/removable/big/uni
 mirror=$bac_dir/mirror.
 bac_src=$mirror/src
@@ -7,14 +9,13 @@ src_tar=scrcpy.git.tgz
 tmp=~/.uni/tmp
 src_dir=$tmp/src
 
-build_dir=
-
-
 restore_src() {
 	mkdir -p $src_dir
 	if [ ! -d $src_dir/scrcpy ];then
-	       cp -r $bac_src/$src_tar $src_dir
-	tar xfvz $src_dir/$src_tar
+		cp -r $bac_src/$src_tar $src_dir
+		cd $src_dir
+		tar xfvz $src_dir/$src_tar
+	fi
 }
 
 clone() {
@@ -64,7 +65,7 @@ depends() {
 }
 
 install_this(){
-	src_restore
+	restore_src
 }
 
 first_run() {
@@ -75,7 +76,7 @@ first_run() {
 
 
 main() {
-	depends
+	#depends
 	#build
 	install_this
 }
