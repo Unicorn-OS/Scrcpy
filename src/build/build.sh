@@ -8,10 +8,15 @@ src_tar=scrcpy.git.tgz
 
 tmp=~/.uni/tmp
 src_dir=$tmp/src
+src=$src_dir/scrcpy
+
+mk_src_dir() {
+	mkdir -p $src_dir
+}
 
 restore_src() {
-	mkdir -p $src_dir
-	if [ ! -d $src_dir/scrcpy ];then
+	mk_src_dir
+	if [ ! -d $src ];then
 		cp -r $bac_src/$src_tar $src_dir
 		cd $src_dir
 		tar xfvz $src_dir/$src_tar
@@ -19,7 +24,9 @@ restore_src() {
 }
 
 clone() {
-	if [ ! -d scrcpy ];then
+	if [ ! -d $src ];then
+		mk_src_dir
+		cd $src_dir
 		git clone https://github.com/Genymobile/scrcpy.git
 	fi
 }
@@ -65,7 +72,11 @@ depends() {
 }
 
 install_this(){
-	restore_src
+	if ! command -v scrcpy >/dev/null 2>&1;then
+		restore_src
+		cd $src
+		./install_release.sh
+	fi
 }
 
 first_run() {
